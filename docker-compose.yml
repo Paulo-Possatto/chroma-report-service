@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  report-service:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+      - DATABASE_NAME=chroma_data
+      - COLLECTION_NAME=analysis_data
+
+  mongo:
+    image: mongo:5.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
